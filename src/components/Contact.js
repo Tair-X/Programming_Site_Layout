@@ -1,54 +1,43 @@
-import React, {useState, useRef, useEffect} from 'react'
-import Header from './Header';
-import Details from './Details';
+import React from  'react'
+import {Button, Container, Form} from "react-bootstrap";
 
-function Player(props) {
-    const audioEl = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
 
-    useEffect(() => {
-        if (isPlaying) {
-            audioEl.current.play();
-        } else {
-            audioEl.current.pause();
-        }
-    });
+function  Contact(props) {
 
-    const SkipSong = (forwards = true) => {
-        if (forwards) {
-            props.setCurrentSongIndex(() => {
-                let temp = props.currentSongIndex;
-                temp++;
-
-                if (temp > props.songs.length - 1) {
-                    temp = 0;
-                }
-
-                return temp;
-            });
-        } else {
-            props.setCurrentSongIndex(() => {
-                let temp = props.currentSongIndex;
-                temp--;
-
-                if (temp < 0) {
-                    temp = props.songs.length - 1;
-                }
-
-                return temp;
-            });
-        }
-    }
 
     return (
-        <div className="c-player">
-            <audio src={props.songs[props.currentSongIndex].src} ref={audioEl}></audio>
-            <h4>Playing now</h4>
-            <Details song={props.songs[props.currentSongIndex]} />
-            <Header isPlaying={isPlaying} setIsPlaying={setIsPlaying} SkipSong={SkipSong} />
-            <p>Next up: <span>{props.songs[props.nextSongIndex].title} by {props.songs[props.nextSongIndex].artist}</span></p>
-        </div>
+        <Container style={{width:'500px'}} >
+         <h1 className="text-center">Contact Us</h1>
+            <Form>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>
+                       Email address
+                    </Form.Label>
+
+                    <Form.Control type="email" placeholder="Enter email"/>
+                        <Form.Text>
+                            We will never share your email with anyone else
+                        </Form.Text>
+
+
+                </Form.Group>
+
+
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Label>
+                        Contact us
+                    </Form.Label>
+                    <Form.Control as="textarea" rows="3"/>
+                </Form.Group>
+
+
+                <Form.Group controlId="formBasicCheckBox">
+                    <Form.Check type="checkbox" label="Check me out"/>
+                </Form.Group>
+                <Button variant="primary" type="submit">Submit</Button>
+            </Form>
+          </Container>
     )
 }
 
-export default Player;
+export default Contact;

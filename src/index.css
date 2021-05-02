@@ -9,6 +9,13 @@ body {
   background-color: #DDD;
 }
 
+
+.assas{
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
 .App {
   display: flex;
   align-items: center;
