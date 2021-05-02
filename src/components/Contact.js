@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react'
-import Controls from './Controls';
+import Header from './Header';
 import Details from './Details';
 
 function Player(props) {
@@ -45,7 +45,7 @@ function Player(props) {
             <audio src={props.songs[props.currentSongIndex].src} ref={audioEl}></audio>
             <h4>Playing now</h4>
             <Details song={props.songs[props.currentSongIndex]} />
-            <Controls isPlaying={isPlaying} setIsPlaying={setIsPlaying} SkipSong={SkipSong} />
+            <Header isPlaying={isPlaying} setIsPlaying={setIsPlaying} SkipSong={SkipSong} />
             <p>Next up: <span>{props.songs[props.nextSongIndex].title} by {props.songs[props.nextSongIndex].artist}</span></p>
         </div>
     )
